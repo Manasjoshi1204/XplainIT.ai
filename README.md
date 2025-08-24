@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 🧠 XplainIT.ai
 
 XplainIT.ai is an AI-powered explainer tool that simplifies technical concepts or code based on your selected tone, depth, and language.
