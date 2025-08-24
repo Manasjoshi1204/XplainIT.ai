@@ -1,26 +1,31 @@
-import openai
+# explain_engine.py - Google AI Studio
+import google.generativeai as genai
+import os
+from dotenv import load_dotenv
 
-# 🌐 OpenRouter / OpenAI setup
-client = openai.OpenAI(
-    api_key="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",
-    base_url="https://openrouter.ai/api/v1"
-)
+load_dotenv()
+
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def generate_explanation(topic, level, tone, extras, language):
-    prompt = f"""
-Explain the topic or code: "{topic}".
-- Understanding level: {level}
-- Tone: {tone}
-- Extras: {extras}
-- Preferred language: {language or 'English'}
-Ensure clarity, accuracy, and readability.
-"""
+    prompt = f"""Explain '{topic}' clearly for someone at {level} level.
+
+Use a {tone} tone and {language or 'English'} language.
+{f'Additional requirements: {extras}' if extras else ''}
+
+Make it comprehensive, engaging, and easy to understand with examples."""
+    
     try:
-        response = client.chat.completions.create(
-            model="mistralai/mistral-7b-instruct:free",
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.7,
-        )
-        return response.choices[0].message.content
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        response = model.generate_content(prompt)
+        return response.text if response.text else "No response generated. Try again."
     except Exception as e:
-        return f"❌ Error: {str(e)}"
+        return f"Error: {str(e)}"
+
+def test_connection():
+    try:
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        response = model.generate_content("Say hello!")
+        return True, "Google AI working!"
+    except Exception as e:
+        return False, str(e)
