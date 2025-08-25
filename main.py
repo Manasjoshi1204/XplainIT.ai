@@ -239,7 +239,7 @@ if not st.session_state.authenticated:
                             elif response and response.status_code == 400:
                                 st.error("❌ Username or email already exists")
                             else:
-                                st.error("❌ Failed to create account: User exists with same username or same email adress")
+                                st.error("❌ Failed to create account")
                     else:
                         st.error("Passwords don't match")
                 else:
