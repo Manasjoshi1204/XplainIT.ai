@@ -174,9 +174,10 @@ if not st.session_state.authenticated:
         st.info("To start backend: `cd backend` then `python app.py`")
         st.stop()
 
-    st.markdown("""
-    <div style="text-align: center; padding: 2rem 0;">
-        <h1>🧠 XplainIT.ai</h1>
+    st.markdown("""           
+                
+    <div style="text-align: center; margin-top: 0; padding: 0;">
+        <h1 style="margin-top: 0;">🧠 XplainIT.ai</h1>
         <p style="font-size: 1.2rem; color: #888;">Your Personal AI Tutor with Secure User Accounts</p>
     </div>
     """, unsafe_allow_html=True)
@@ -238,7 +239,7 @@ if not st.session_state.authenticated:
                             elif response and response.status_code == 400:
                                 st.error("❌ Username or email already exists")
                             else:
-                                st.error("❌ Failed to create account")
+                                st.error("❌ Failed to create account: User exists with same username or same email adress")
                     else:
                         st.error("Passwords don't match")
                 else:
