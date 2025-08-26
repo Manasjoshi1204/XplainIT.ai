@@ -5,7 +5,12 @@ from datetime import datetime
 import re
 import warnings
 import json
+import sys
+import os
 warnings.filterwarnings("ignore", message=".*ScriptRunContext.*")
+
+backend_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "backend"))
+sys.path.append(backend_path)
 
 # Try to import local modules, fallback if not available
 try:
