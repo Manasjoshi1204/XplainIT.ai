@@ -23,7 +23,8 @@ class Settings:
     ALLOWED_ORIGINS: list = [
         "http://localhost:8501",  # Streamlit
         "http://localhost:3000",  # React dev server
-        "https://your-domain.com"  # Production domain
+        "https://your-domain.com",  # Production domain
+        "https://xplainit-ai.onrender.com"
     ]
     
     # API Keys (load from environment variables)
