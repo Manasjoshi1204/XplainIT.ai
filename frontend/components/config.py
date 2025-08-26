@@ -21,6 +21,7 @@ class Settings:
     
     # CORS Settings
     ALLOWED_ORIGINS: list = [
+        "https://xplainit-ai-frontend.onrender.com",
         "http://localhost:8501",  # Streamlit
         "http://localhost:3000",  # React dev server
         "https://your-domain.com"  # Production domain
