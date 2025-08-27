@@ -26,7 +26,8 @@ except ImportError:
     HAS_LOCAL_ENGINE = False
 
 # Backend configuration
-BACKEND_URL = os.getenv("https://xplainit-ai.onrender.com", "http://localhost:8000")
+BACKEND_URL = "https://xplainit-ai.onrender.com"
+
 
 # Page config with better SEO
 st.set_page_config(
